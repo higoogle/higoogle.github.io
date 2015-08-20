@@ -5,16 +5,37 @@
   
   <title>C#学习笔记(1) | LiuTop开发Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="学会→会学→会用→被用">
+  <meta name="description" content="C#中所有的值类型都继承于System.ValueType,然而System.ValueType又继承于System.Object.
+System.Object是所有的类的基类
+int = Int32
+bool = Sytem.Bool 以此类推。。。
+变量首字母小写，方法首字母大写
+int x = 0; 等价于 int x = new int();  //不同于Java
+F12查看类的定义
+就拿">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C#学习笔记(1)">
 <meta property="og:url" content="http://higoogle.github.io/20150820/C-学习笔记-1/index.html">
 <meta property="og:site_name" content="LiuTop开发Blog">
-<meta property="og:description" content="学会→会学→会用→被用">
-<meta property="og:updated_time" content="2015-08-20T01:53:01.855Z">
+<meta property="og:description" content="C#中所有的值类型都继承于System.ValueType,然而System.ValueType又继承于System.Object.
+System.Object是所有的类的基类
+int = Int32
+bool = Sytem.Bool 以此类推。。。
+变量首字母小写，方法首字母大写
+int x = 0; 等价于 int x = new int();  //不同于Java
+F12查看类的定义
+就拿">
+<meta property="og:updated_time" content="2015-08-20T02:38:58.281Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C#学习笔记(1)">
-<meta name="twitter:description" content="学会→会学→会用→被用">
+<meta name="twitter:description" content="C#中所有的值类型都继承于System.ValueType,然而System.ValueType又继承于System.Object.
+System.Object是所有的类的基类
+int = Int32
+bool = Sytem.Bool 以此类推。。。
+变量首字母小写，方法首字母大写
+int x = 0; 等价于 int x = new int();  //不同于Java
+F12查看类的定义
+就拿">
   
   
     <link rel="icon" href="/favicon.png">
@@ -111,7 +132,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						
+						<a href="/tags/c/" style="font-size: 10px;">c#</a>
 					</div>
 				</section>
 				
@@ -204,6 +225,10 @@
       
       <div class="article-info article-info-post">
         
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/">c#</a></li></ul>
+	</div>
+
         
 
         <div class="clearfix"></div>
@@ -212,7 +237,30 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <ol>
+<li>C#中所有的值类型都继承于<code>System.ValueType</code>,然而<code>System.ValueType</code>又继承于<code>System.Object</code>.</li>
+<li><code>System.Object</code>是所有的类的基类</li>
+<li>int = Int32</li>
+<li>bool = Sytem.Bool 以此类推。。。</li>
+<li>变量首字母小写，方法首字母大写</li>
+<li><code>int x = 0;</code> 等价于 <code>int x = new int();</code>  //不同于Java</li>
+<li><code>F12</code>查看类的定义</li>
+<li>就拿<code>int</code>类型说明，<code>int</code>是struct类型，它本身有些方法，可以通过<code>.</code>来调用</li>
+<li>枚举: <code>enum Week{Mon,Thu,Wen,Tus,Fri,Sat,Sun};</code> 打印的结果是Mon,而非类是OC,Java的0，1，2等,不过可以强制转化为int类型，这个机制是通用的。</li>
+<li>CSharp 3 推出<code>var</code>.任何类型都可以使用<code>var</code>来申明，比如:<code>var z = 100;</code></li>
+</ol>
+<hr>
+<ol>
+<li>CSharp3中内置类类型：<code>Object,String,Dynamic</code>.</li>
+<li>关于类型大小的写：<code>string username = &quot;zhanshan&quot;;</code> == <code>Stirng username = &quot;zhanshan&quot;</code> ==<code>System.String username = &quot;zhanshan&quot;;同样的</code>Object = object = System.Object`</li>
+<li><code>Object</code>常用方法: <code>GetType()</code>,<code>ToString()</code></li>
+<li>string可以使用 <code>+=</code> 来处理。 <code>string a = &quot;aa&quot;; a+= &quot;bb&quot;</code>; </li>
+<li><code>string a = &quot;abcd&quot;; a[0] ===&gt; &#39;a&#39;</code></li>
+<li><code>string a =&quot;E:\\DEV&quot;</code> == <code>string a = @&quot;E:\DEV&quot;</code></li>
+<li>如果需要频繁的操作字符串，不推荐使用<code>string</code>,而要使用<code>StringBuilder</code></li>
+<li>因为频繁操作字符串，每次操作都会分配一次内存空间，而使用<code>StringBuilder</code>仅为一次</li>
+</ol>
+
       
     </div>
     
