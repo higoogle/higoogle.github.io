@@ -206,13 +206,62 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h2 id="Public_vs_Private_vs_protected_vs_internal">Public vs Private vs protected vs internal</h2><ol>
+<li><code>public</code>:  对任何类和成员都公开, 无限制访问;</li>
+<li><code>protected</code>: 仅仅对该类以及该类的派生类公开;</li>
+<li><code>private</code>: 仅仅对该类公开;</li>
+<li><code>internal</code>: 只能值包含该类的程序集中访问该类(只是单独的项目,而不是整个解决方案);</li>
+<li><code>protected internal</code>: 只能在本类,派生类或者包含该类的程序集中访问.</li>
+</ol>
+<hr>
+<p>微软官方文档解释：</p>
+<blockquote>
+<p>public</p>
+</blockquote>
+<pre><code>The type <span class="operator">or</span> member can be accessed <span class="keyword">by</span> <span class="keyword">any</span> other code <span class="operator">in</span> <span class="operator">the</span> same assembly <span class="operator">or</span> another assembly that references <span class="keyword">it</span>.
+</code></pre><blockquote>
+<p>private</p>
+</blockquote>
+<pre><code>The type <span class="keyword">or</span> member can only <span class="keyword">be</span> accessed <span class="keyword">by</span> code <span class="keyword">in</span> the same class <span class="keyword">or</span> <span class="keyword">struct</span>.
+</code></pre><blockquote>
+<p>protected</p>
+</blockquote>
+<pre><code><span class="type">The</span> <span class="keyword">type</span> <span class="keyword">or</span> member can only be accessed by code <span class="keyword">in</span> the same <span class="keyword">class</span> <span class="keyword">or</span> <span class="keyword">struct</span>, <span class="keyword">or</span> <span class="keyword">in</span> a derived <span class="keyword">class</span>.
+</code></pre><blockquote>
+<p>internal</p>
+</blockquote>
+<pre><code>The <span class="keyword">type</span> <span class="keyword">or</span> member can be accessed <span class="keyword">by</span> any code <span class="keyword">in</span> the same <span class="keyword">assembly</span>, but <span class="keyword">not</span> <span class="keyword">from</span> another <span class="keyword">assembly</span>.
+</code></pre><blockquote>
+<p>protected internal</p>
+</blockquote>
+<pre><code>The <span class="keyword">type</span> <span class="keyword">or</span> member can be accessed <span class="keyword">by</span> any code <span class="keyword">in</span> the same <span class="keyword">assembly</span>, <span class="keyword">or</span> <span class="keyword">by</span> any derived <span class="keyword">class</span> <span class="keyword">in</span> another <span class="keyword">assembly</span>.
+
+
+Only one access modifier <span class="keyword">is</span> allowed <span class="keyword">for</span> a member <span class="keyword">or</span> <span class="keyword">type</span>, <span class="keyword">except</span> when you use the <span class="keyword">protected</span> internal combination.
+Access modifiers are <span class="keyword">not</span> allowed <span class="keyword">on</span> namespaces. Namespaces have no access restrictions.
+Depending <span class="keyword">on</span> the context <span class="keyword">in</span> which a member declaration occurs, only certain declared         accessibilities are permitted. <span class="keyword">If</span> no access modifier <span class="keyword">is</span> specified <span class="keyword">in</span> a member declaration, a <span class="keyword">default</span> accessibility <span class="keyword">is</span> used.
+Top-level types, which are <span class="keyword">not</span> <span class="keyword">nested</span> <span class="keyword">in</span> other types, can only have internal <span class="keyword">or</span> <span class="keyword">public</span> accessibility. The <span class="keyword">default</span> accessibility <span class="keyword">for</span> these types <span class="keyword">is</span> internal.
+</code></pre><p><img src="http://7xl7u4.com1.z0.glb.clouddn.com/imagecsharpaccessleveltable.png" alt="http://7xl7u4.com1.z0.glb.clouddn.com/imagecsharpaccessleveltable.png"></p>
+<hr>
+<blockquote>
+<p>参考:</p>
+<ol>
+<li><a href="http://stackoverflow.com/questions/614818/what-is-the-difference-between-public-private-protected-and-nothing" target="_blank" rel="external">http://stackoverflow.com/questions/614818/what-is-the-difference-between-public-private-protected-and-nothing</a></li>
+<li><a href="https://msdn.microsoft.com/en-us/library/ba0a1yw2.aspx" target="_blank" rel="external">https://msdn.microsoft.com/en-us/library/ba0a1yw2.aspx</a></li>
+<li><a href="http://www.codeproject.com/Articles/792326/Diving-into-OOP-Day-All-About-Csharp-Access-Modifi" target="_blank" rel="external">http://www.codeproject.com/Articles/792326/Diving-into-OOP-Day-All-About-Csharp-Access-Modifi</a></li>
+</ol>
+</blockquote>
+
       
     </div>
     
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/">c#</a></li></ul>
+	</div>
+
       
 
       
