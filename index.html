@@ -180,6 +180,123 @@
 </nav>
       <div class="body-wrap">
   
+    <article id="post-C-学习笔记-4" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/20150821/C-学习笔记-4/" class="article-date">
+  	<time datetime="2015-08-21T03:02:29.000Z" itemprop="datePublished">2015-08-21</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/20150821/C-学习笔记-4/">C#学习笔记(4)</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>##数组</p>
+<ul>
+<li>一维数组<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">5</span>]&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;;</span><br><span class="line"><span class="keyword">int</span> a = <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;;</span><br><span class="line"><span class="keyword">int</span> a = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p>这几种都是相同的</p>
+</blockquote>
+<ul>
+<li>多位数组</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">string</span>[,] names = <span class="keyword">new</span> <span class="built_in">string</span>[<span class="number">5</span>,<span class="number">2</span>];</span><br><span class="line"><span class="built_in">string</span>[][] names = <span class="keyword">new</span> <span class="built_in">string</span>[<span class="number">5</span>,<span class="number">2</span>];</span><br><span class="line"><span class="built_in">string</span>[,] names = &#123;&#123;<span class="string">"zhanshan"</span>,<span class="string">"lishi"</span>&#125;,&#123;<span class="string">"wangwu"</span>,<span class="string">"zhuba"</span>&#125;&#125;;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>类似的申明方式，上面要求数组汇中每种维度的长度都是相同的，如果不相同则：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>[,] numbers = &#123;<span class="keyword">new</span> <span class="keyword">int</span>[]&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;,<span class="keyword">new</span> <span class="keyword">int</span>[]&#123;<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>&#125;&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>这些 new等是不能省略的，省略的必须是相同的维度的，如果省略了，且提供不同的维度数组，则报错</p>
+</blockquote>
+<hr>
+<h2 id="ArrayList_List">ArrayList List</h2><ol>
+<li><code>ArrayList</code>可以同时放置各种类型的值，不会报错</li>
+<li><code>List&lt;int&gt; list = new List&lt;int&gt;()</code></li>
+</ol>
+<h3 id="List_vs_ArrayList">List<t> vs ArrayList</t></h3><blockquote>
+<p>IList and List can only store same type values, but ArrayList can store diff types, For example:</p>
+</blockquote>
+<figure class="highlight ocaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">IList</span> an_ilist = <span class="keyword">new</span> <span class="type">IList</span>&lt;<span class="built_in">string</span>&gt;<span class="literal">()</span>;</span><br><span class="line">an_ilist.<span class="type">Add</span>(<span class="string">"this"</span>)</span><br><span class="line">an_ilist.<span class="type">Add</span>(<span class="string">"is"</span>)</span><br><span class="line">an_ilist.<span class="type">Add</span>(<span class="string">"ilist"</span>)</span><br><span class="line"></span><br><span class="line"><span class="type">List</span> a_list = <span class="keyword">new</span> <span class="type">List</span>&lt;<span class="built_in">string</span>&gt;<span class="literal">()</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">ArrayList</span> an_arraylist = <span class="keyword">new</span> <span class="type">ArrayList</span><span class="literal">()</span>;</span><br><span class="line">an_arrayList.<span class="type">Add</span>(<span class="string">"Hello"</span>);</span><br><span class="line">an_arraylist.<span class="type">Add</span>(<span class="number">99</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">List&lt;T&gt; <span class="keyword">is</span> a <span class="keyword">generic</span> class. It supports storing values <span class="keyword">of</span> a specific <span class="keyword">type</span> without casting <span class="keyword">to</span> <span class="keyword">or</span> from object (which would have incurred boxing/unboxing overhead <span class="keyword">when</span> T <span class="keyword">is</span> a value <span class="keyword">type</span> <span class="keyword">in</span> the ArrayList <span class="keyword">case</span>). ArrayList simply stores object references. As a <span class="keyword">generic</span> collection, it implements the <span class="keyword">generic</span> IEnumerable&lt;T&gt; interface <span class="keyword">and</span> can be used easily <span class="keyword">in</span> LINQ (without requiring any Cast <span class="keyword">or</span> OfType call).</span><br><span class="line"></span><br><span class="line">ArrayList belongs <span class="keyword">to</span> the days that C# didn<span class="attribute">'t</span> have generics. It<span class="attribute">'s</span> deprecated <span class="keyword">in</span> favor <span class="keyword">of</span> List&lt;T&gt;. You shouldn<span class="attribute">'t</span> <span class="keyword">use</span> ArrayList <span class="keyword">in</span> <span class="keyword">new</span> code that targets .NET &gt;= <span class="number">2.0</span> unless you have <span class="keyword">to</span> interface <span class="keyword">with</span> an old API that uses it.</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>解释一下：</p>
+<ol>
+<li><code>List&lt;T&gt;</code>由于是强类型的，所以没有拆箱，装箱的转换</li>
+<li><code>ArrayList</code>它是可以添加任何的类型的，它做安全检查，所以在插入的时候，性能是最好的，但是取值的时候就会比较的麻烦 </li>
+<li><code>ArrayList</code>是C#在没有泛型的是存在的，有泛型后，就不推荐使用ArrayList的了。</li>
+</ol>
+</blockquote>
+<p>性能方面，我看到如下的建议：<br><figure class="highlight fsharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">When the size <span class="keyword">of</span> data need <span class="keyword">to</span> store larger than <span class="number">50000</span>, List&lt;T&gt; performs better. </span><br><span class="line">So <span class="keyword">in</span> common <span class="keyword">use</span> ArrayList <span class="keyword">as</span> far <span class="keyword">as</span> possible</span><br></pre></td></tr></table></figure></p>
+<p>所以呢，是否一定选择使用List<t>而不使用ArrayList，也不是一概而论的,因为大多数情况下，可能集合里面存放的值的个数是很少的，那么<code>ArrayList</code>性能就比较的好了，只要编程的时候注意，即使使用<code>ArrayList</code>也要保证存放的值都是同一种类型的，还是可以大大发挥<code>ArrayList</code>的强悍之处的.</t></p>
+<p><a href="http://blogs.msdn.com/b/joshwil/archive/2004/04/13/112598.aspx" target="_blank" rel="external">ArrayList’s vs. generic List for primitive types and 64-bits</a>性能差异测试，值得一看。</p>
+<h3 id="List_vs_IList">List vs IList</h3><ol>
+<li><code>IList</code>是接口，<code>List</code>是对其的实现</li>
+<li>一般内部方法的使用，不考虑是对外暴露，则使用<code>List</code>即可. 如果需要对外暴露，需要对<code>IList</code>重新实现，则必须使用<code>IList</code></li>
+</ol>
+<p>List实现<a href="http://referencesource.microsoft.com/#mscorlib/system/collections/generic/list.cs" target="_blank" rel="external">源码</a>可以参考</p>
+<p><img src="http://7xl7u4.com1.z0.glb.clouddn.com/imagecsharplistandilist.png" alt="http://7xl7u4.com1.z0.glb.clouddn.com/imagecsharplistandilist.png"></p>
+<hr>
+<h2 id="Hashtable_,_Dictionary">Hashtable , Dictionary</h2><h3 id="Hashtable">Hashtable</h3><figure class="highlight openscad"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Hashtable ht = new Hashtable<span class="params">()</span>;</span><br><span class="line">ht.Add<span class="params">(<span class="string">"name"</span>,<span class="string">"zhanshan"</span>)</span>;</span><br><span class="line">ht.Add<span class="params">(<span class="string">"sex"</span>,<span class="string">"man"</span>)</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="Dictionary">Dictionary</h3><figure class="highlight ocaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Dictionary</span>&lt;<span class="built_in">string</span>,<span class="built_in">string</span>&gt; dict = <span class="keyword">new</span> <span class="type">Dictionary</span>&lt;<span class="built_in">string</span>,<span class="built_in">string</span>&gt;<span class="literal">()</span>;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Hashtable和Dictioanry的使用上区别就是类似于ArrayList和List的区别<br>这里有个很棒的英文解释：</p>
+</blockquote>
+<figure class="highlight oxygene"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">Dictionary &lt;&lt;&lt;&gt;&gt;&gt; Hashtable differences:</span><br><span class="line"></span><br><span class="line">Generic &lt;&lt;&lt;&gt;&gt;&gt; Non-Generic</span><br><span class="line">Needs own thread synchronization &lt;&lt;&lt;&gt;&gt;&gt; Offers thread safe version through Synchronized() <span class="function"><span class="keyword">method</span></span><br><span class="line"><span class="title">Enumerated</span> <span class="title">item</span>:</span> KeyValuePair &lt;&lt;&lt;&gt;&gt;&gt; Enumerated item: DictionaryEntry</span><br><span class="line">Newer (&gt; .NET <span class="number">2.0</span>) &lt;&lt;&lt;&gt;&gt;&gt; Older (since .NET <span class="number">1.0</span>)</span><br><span class="line"><span class="keyword">is</span> <span class="keyword">in</span> System.Collections.Generic &lt;&lt;&lt;&gt;&gt;&gt; <span class="keyword">is</span> <span class="keyword">in</span> System.Collections</span><br><span class="line">Request <span class="keyword">to</span> non-existing key throws exception &lt;&lt;&lt;&gt;&gt;&gt; Request <span class="keyword">to</span> non-existing key returns null</span><br><span class="line">potentially a bit faster <span class="keyword">for</span> value types &lt;&lt;&lt;&gt;&gt;&gt; bit slower (needs boxing/unboxing) <span class="keyword">for</span> value types</span><br><span class="line">Dictionary / Hashtable similarities:</span><br><span class="line"></span><br><span class="line">Both are internally hashtables == fast access <span class="keyword">to</span> many-item data according <span class="keyword">to</span> key</span><br><span class="line">Both need immutable <span class="keyword">and</span> unique keys</span><br><span class="line">Keys <span class="keyword">of</span> both need own GetHashCode() <span class="function"><span class="keyword">method</span></span><br><span class="line"><span class="title">Similar</span> .<span class="title">NET</span> <span class="title">collections</span> <span class="params">(candidates <span class="keyword">to</span> use instead <span class="keyword">of</span> Dictionary <span class="keyword">and</span> Hashtable)</span>:</span></span><br><span class="line"></span><br><span class="line">ConcurrentDictionary - thread safe (can be safely accessed <span class="keyword">from</span> several threads concurrently)</span><br><span class="line">HybridDictionary - optimized performance (<span class="keyword">for</span> few items <span class="keyword">and</span> also <span class="keyword">for</span> many items)</span><br><span class="line">OrderedDictionary - values can be accessed via int <span class="keyword">index</span> (<span class="keyword">by</span> <span class="keyword">order</span> <span class="keyword">in</span> which items were added)</span><br><span class="line">SortedDictionary - items automatically sorted</span><br><span class="line">StringDictionary - strongly typed <span class="keyword">and</span> optimized <span class="keyword">for</span> strings</span><br></pre></td></tr></table></figure>
+<hr>
+<blockquote>
+<p>参考：</p>
+<ol>
+<li><a href="http://stackoverflow.com/questions/2309694/arraylist-vs-list-in-c-sharp" target="_blank" rel="external">http://stackoverflow.com/questions/2309694/arraylist-vs-list-in-c-sharp</a></li>
+<li><a href="http://linuxaged.github.io/2013/04/07/ilist-vs-list-vs-arraylist-in-c/" target="_blank" rel="external">http://linuxaged.github.io/2013/04/07/ilist-vs-list-vs-arraylist-in-c/</a></li>
+<li><a href="http://blog.csdn.net/zhang_xinxiu/article/details/8657431" target="_blank" rel="external">http://blog.csdn.net/zhang_xinxiu/article/details/8657431</a></li>
+<li><a href="http://www.cnblogs.com/godblessyou/archive/2011/05/05/2037572.html" target="_blank" rel="external">http://www.cnblogs.com/godblessyou/archive/2011/05/05/2037572.html</a></li>
+<li><a href="http://stackoverflow.com/questions/400135/c-sharp-listt-or-ilistt" target="_blank" rel="external">http://stackoverflow.com/questions/400135/c-sharp-listt-or-ilistt</a></li>
+<li><a href="http://stackoverflow.com/questions/301371/why-is-dictionary-preferred-over-hashtable" target="_blank" rel="external">http://stackoverflow.com/questions/301371/why-is-dictionary-preferred-over-hashtable</a></li>
+<li><a href="http://www.cnblogs.com/chengxingliang/archive/2013/04/15/3020428.html" target="_blank" rel="external">http://www.cnblogs.com/chengxingliang/archive/2013/04/15/3020428.html</a></li>
+</ol>
+</blockquote>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/">c#</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
     <article id="post-C-学习笔记-3" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
