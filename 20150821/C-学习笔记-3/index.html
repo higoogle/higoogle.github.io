@@ -3,17 +3,21 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Tag: c# | LiuTop开发Blog</title>
+  <title>C#学习笔记(3) | LiuTop开发Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="学会→会学→会用→被用">
-<meta property="og:type" content="website">
-<meta property="og:title" content="LiuTop开发Blog">
-<meta property="og:url" content="http://higoogle.github.io/tags/c/index.html">
+  <meta name="description" content="判断是不是某种类型 x is SomeClass
+ClassDog,ClassAnimal,ClassTree. ClassDog extends ClassAnimal. 如果做强制类型转化 dog = (ClassDog)ani, 这样多半没有问题，如果是tree = (ClassTree)dog 则报异常。CSharp中提供了比Java等更加安全的方式 ClassTree tree2 =">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C#学习笔记(3)">
+<meta property="og:url" content="http://higoogle.github.io/20150821/C-学习笔记-3/index.html">
 <meta property="og:site_name" content="LiuTop开发Blog">
-<meta property="og:description" content="学会→会学→会用→被用">
+<meta property="og:description" content="判断是不是某种类型 x is SomeClass
+ClassDog,ClassAnimal,ClassTree. ClassDog extends ClassAnimal. 如果做强制类型转化 dog = (ClassDog)ani, 这样多半没有问题，如果是tree = (ClassTree)dog 则报异常。CSharp中提供了比Java等更加安全的方式 ClassTree tree2 =">
+<meta property="og:updated_time" content="2015-08-21T02:50:21.247Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LiuTop开发Blog">
-<meta name="twitter:description" content="学会→会学→会用→被用">
+<meta name="twitter:title" content="C#学习笔记(3)">
+<meta name="twitter:description" content="判断是不是某种类型 x is SomeClass
+ClassDog,ClassAnimal,ClassTree. ClassDog extends ClassAnimal. 如果做强制类型转化 dog = (ClassDog)ani, 这样多半没有问题，如果是tree = (ClassTree)dog 则报异常。CSharp中提供了比Java等更加安全的方式 ClassTree tree2 =">
   
   
     <link rel="icon" href="/favicon.png">
@@ -178,115 +182,113 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-C-学习笔记-3" class="article article-type-post" itemscope itemprop="blogPost">
   
+    <div class="article-meta">
+      <a href="/20150821/C-学习笔记-3/" class="article-date">
+  	<time datetime="2015-08-21T01:56:15.000Z" itemprop="datePublished">2015-08-21</time>
+</a>
+    </div>
   
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
     
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      C#学习笔记(3)
+    </h1>
+  
+
+      </header>
       
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/">c#</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2015" class="archive-year">2015</a>
-        </div>
-        <div class="archives">
     
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/20150821/C-学习笔记-3/" class="archive-article-date">
-  	<time datetime="2015-08-21T01:56:15.000Z" itemprop="datePublished">8月 21</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/20150821/C-学习笔记-3/">C#学习笔记(3)</a>
-    </h1>
-  
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li>判断是不是某种类型 <code>x is SomeClass</code></li>
+<li>ClassDog,ClassAnimal,ClassTree. ClassDog extends ClassAnimal. 如果做强制类型转化 <code>dog = (ClassDog)ani</code>, 这样多半没有问题，如果是<code>tree = (ClassTree)dog</code> 则报异常。CSharp中提供了比Java等更加安全的方式 <code>ClassTree tree2 =  tree as dog</code> 这样在Runtime的时候会检查类型，类型不对,则<code>tree2 == null</code>.而不会出现异常。</li>
+<li><code>as</code> 必须用作引用类型</li>
+<li>值类型转string。比如：<code>int x = 10; string xstr = x.ToString();</code>即可。</li>
+<li>string转成值类型，比如<code>int</code>. <code>int x = Convert.ToInt32(xStr)</code>; 比必须使用<code>Convert</code>的方法才行</li>
+<li>如果xStr = “123”,则没有问题，如果是”abc”,则报异常。</li>
+<li>还可以<code>Int32.Parse(xStr)</code>也是可以的</li>
+<li>还有一种安全的string to int 转换： <code>int x; bool suc = Int32.TryParse(&quot;abc&quot;, out x)</code>; 如果成功，则<code>x</code>有正确的值， <code>suc</code>也是<code>true</code>，否则<code>x == 0,suc == false</code>.但是不会报异常，这是很安全的处理方法</li>
+<li>双<code>??</code>的用法,比如 <code>int x = xx ?? 500</code>; 表示如果 xx 是空值，则 x == 500 ,否则 x == xx</li>
+</ol>
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/">c#</a></li></ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    
   </div>
-</article>
   
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/20150820/C-学习笔记-2/" class="archive-article-date">
-  	<time datetime="2015-08-20T02:57:22.000Z" itemprop="datePublished">8月 20</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/20150820/C-学习笔记-2/">C#学习笔记(2)</a>
-    </h1>
   
+    <a href="/20150820/C-学习笔记-2/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">C#学习笔记(2)</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/">c#</a></li></ul>
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
 	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
 
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/20150820/C-学习笔记-1/" class="archive-article-date">
-  	<time datetime="2015-08-20T01:53:01.000Z" itemprop="datePublished">8月 20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/20150820/C-学习笔记-1/">C#学习笔记(1)</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/">c#</a></li></ul>
-	</div>
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="C-学习笔记-3" data-title="C#学习笔记(3)" data-url="http://higoogle.github.io/20150821/C-学习笔记-3/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
 
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
 
-    
 
 </div>
       <footer id="footer">
@@ -312,9 +314,9 @@
 		mathjax: true,
 		animate: undefined,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: undefined
 	}
