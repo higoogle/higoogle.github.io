@@ -5,16 +5,16 @@
   
   <title>iOS工作记录(1) | LiuTop开发Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="异常处理当使用静态库的时候，在category定义的方法，可以调用，但是运行的时候报错：unrecognized selector.处理方法就是在target setting中的 other linker flags中配置-ObjC 即可解决问题。">
+  <meta name="description" content="异常处理当使用静态库的时候，在category定义的方法，可以调用，但是运行的时候报错：unrecognized selector.处理方法就是在target ==&amp;gt; build settings中的 other linker flags中配置-ObjC 即可解决问题。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iOS工作记录(1)">
 <meta property="og:url" content="http://higoogle.github.io/20150824/iOS工作记录-1/index.html">
 <meta property="og:site_name" content="LiuTop开发Blog">
-<meta property="og:description" content="异常处理当使用静态库的时候，在category定义的方法，可以调用，但是运行的时候报错：unrecognized selector.处理方法就是在target setting中的 other linker flags中配置-ObjC 即可解决问题。">
-<meta property="og:updated_time" content="2015-08-24T05:35:25.001Z">
+<meta property="og:description" content="异常处理当使用静态库的时候，在category定义的方法，可以调用，但是运行的时候报错：unrecognized selector.处理方法就是在target ==&amp;gt; build settings中的 other linker flags中配置-ObjC 即可解决问题。">
+<meta property="og:updated_time" content="2015-08-24T05:40:18.225Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS工作记录(1)">
-<meta name="twitter:description" content="异常处理当使用静态库的时候，在category定义的方法，可以调用，但是运行的时候报错：unrecognized selector.处理方法就是在target setting中的 other linker flags中配置-ObjC 即可解决问题。">
+<meta name="twitter:description" content="异常处理当使用静态库的时候，在category定义的方法，可以调用，但是运行的时候报错：unrecognized selector.处理方法就是在target ==&amp;gt; build settings中的 other linker flags中配置-ObjC 即可解决问题。">
   
   
     <link rel="icon" href="/favicon.png">
@@ -216,7 +216,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="异常处理">异常处理</h2><p>当使用静态库的时候，在category定义的方法，可以调用，但是运行的时候报错：<code>unrecognized selector</code>.<br>处理方法就是在target setting中的 <code>other linker flags</code>中配置<code>-ObjC</code> 即可解决问题。</p>
+        <h2 id="异常处理">异常处理</h2><p>当使用静态库的时候，在category定义的方法，可以调用，但是运行的时候报错：<code>unrecognized selector</code>.<br>处理方法就是在target ==&gt; build settings中的 <code>other linker flags</code>中配置<code>-ObjC</code> 即可解决问题。</p>
 
       
     </div>
