@@ -3,21 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>C#学习笔记(3) | LiuTop开发Blog</title>
+  <title>C#学习笔记-多态(6) | LiuTop开发Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="判断是不是某种类型 x is SomeClass
-ClassDog,ClassAnimal,ClassTree. ClassDog extends ClassAnimal. 如果做强制类型转化 dog = (ClassDog)ani, 这样多半没有问题，如果是tree = (ClassTree)dog 则报异常。CSharp中提供了比Java等更加安全的方式 ClassTree tree2 =">
+  <meta name="description" content="学会→会学→会用→被用">
 <meta property="og:type" content="article">
-<meta property="og:title" content="C#学习笔记(3)">
-<meta property="og:url" content="http://higoogle.github.io/20150821/C-学习笔记-3/index.html">
+<meta property="og:title" content="C#学习笔记-多态(6)">
+<meta property="og:url" content="http://higoogle.github.io/20150821/C-学习笔记-多态-6/index.html">
 <meta property="og:site_name" content="LiuTop开发Blog">
-<meta property="og:description" content="判断是不是某种类型 x is SomeClass
-ClassDog,ClassAnimal,ClassTree. ClassDog extends ClassAnimal. 如果做强制类型转化 dog = (ClassDog)ani, 这样多半没有问题，如果是tree = (ClassTree)dog 则报异常。CSharp中提供了比Java等更加安全的方式 ClassTree tree2 =">
-<meta property="og:updated_time" content="2015-08-21T02:50:21.247Z">
+<meta property="og:description" content="学会→会学→会用→被用">
+<meta property="og:updated_time" content="2015-08-21T13:17:42.463Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="C#学习笔记(3)">
-<meta name="twitter:description" content="判断是不是某种类型 x is SomeClass
-ClassDog,ClassAnimal,ClassTree. ClassDog extends ClassAnimal. 如果做强制类型转化 dog = (ClassDog)ani, 这样多半没有问题，如果是tree = (ClassTree)dog 则报异常。CSharp中提供了比Java等更加安全的方式 ClassTree tree2 =">
+<meta name="twitter:title" content="C#学习笔记-多态(6)">
+<meta name="twitter:description" content="学会→会学→会用→被用">
   
   
     <link rel="icon" href="/favicon.png">
@@ -182,11 +179,11 @@ ClassDog,ClassAnimal,ClassTree. ClassDog extends ClassAnimal. 如果做强制类
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap"><article id="post-C-学习笔记-3" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-C-学习笔记-多态-6" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/20150821/C-学习笔记-3/" class="article-date">
-  	<time datetime="2015-08-21T01:56:15.000Z" itemprop="datePublished">2015-08-21</time>
+      <a href="/20150821/C-学习笔记-多态-6/" class="article-date">
+  	<time datetime="2015-08-21T13:17:42.000Z" itemprop="datePublished">2015-08-21</time>
 </a>
     </div>
   
@@ -199,7 +196,7 @@ ClassDog,ClassAnimal,ClassTree. ClassDog extends ClassAnimal. 如果做强制类
         
   
     <h1 class="article-title" itemprop="name">
-      C#学习笔记(3)
+      C#学习笔记-多态(6)
     </h1>
   
 
@@ -207,10 +204,6 @@ ClassDog,ClassAnimal,ClassTree. ClassDog extends ClassAnimal. 如果做强制类
       
       <div class="article-info article-info-post">
         
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/">c#</a></li></ul>
-	</div>
-
         
 
         <div class="clearfix"></div>
@@ -219,18 +212,7 @@ ClassDog,ClassAnimal,ClassTree. ClassDog extends ClassAnimal. 如果做强制类
     
     <div class="article-entry" itemprop="articleBody">
       
-        <ol>
-<li>判断是不是某种类型 <code>x is SomeClass</code></li>
-<li>ClassDog,ClassAnimal,ClassTree. ClassDog extends ClassAnimal. 如果做强制类型转化 <code>dog = (ClassDog)ani</code>, 这样多半没有问题，如果是<code>tree = (ClassTree)dog</code> 则报异常。CSharp中提供了比Java等更加安全的方式 <code>ClassTree tree2 =  tree as dog</code> 这样在Runtime的时候会检查类型，类型不对,则<code>tree2 == null</code>.而不会出现异常。</li>
-<li><code>as</code> 必须用作引用类型</li>
-<li>值类型转string。比如：<code>int x = 10; string xstr = x.ToString();</code>即可。</li>
-<li>string转成值类型，比如<code>int</code>. <code>int x = Convert.ToInt32(xStr)</code>; 比必须使用<code>Convert</code>的方法才行</li>
-<li>如果xStr = “123”,则没有问题，如果是”abc”,则报异常。</li>
-<li>还可以<code>Int32.Parse(xStr)</code>也是可以的</li>
-<li>还有一种安全的string to int 转换： <code>int x; bool suc = Int32.TryParse(&quot;abc&quot;, out x)</code>; 如果成功，则<code>x</code>有正确的值， <code>suc</code>也是<code>true</code>，否则<code>x == 0,suc == false</code>.但是不会报异常，这是很安全的处理方法</li>
-<li>双<code>??</code>的用法,比如 <code>int x = xx ?? 500</code>; 表示如果 xx 是空值，则 x == 500 ,否则 x == xx</li>
-</ol>
-
+        
       
     </div>
     
@@ -239,18 +221,18 @@ ClassDog,ClassAnimal,ClassTree. ClassDog extends ClassAnimal. 如果做强制类
     
 <nav id="article-nav">
   
-    <a href="/20150821/C-学习笔记-4/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/20150824/iOS工作记录-1/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          C#学习笔记(4)
+          iOS工作记录(1)
         
       </div>
     </a>
   
   
-    <a href="/20150820/C-学习笔记-2/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">C#学习笔记(2)</div>
+    <a href="/20150821/C-学习笔记-5/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">C#学习笔记(5)</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -279,7 +261,7 @@ ClassDog,ClassAnimal,ClassTree. ClassDog extends ClassAnimal. 如果做强制类
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="C-学习笔记-3" data-title="C#学习笔记(3)" data-url="http://higoogle.github.io/20150821/C-学习笔记-3/"></div>
+	<div class="ds-thread" data-thread-key="C-学习笔记-多态-6" data-title="C#学习笔记-多态(6)" data-url="http://higoogle.github.io/20150821/C-学习笔记-多态-6/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
