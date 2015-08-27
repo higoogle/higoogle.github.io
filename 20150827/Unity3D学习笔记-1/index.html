@@ -3,17 +3,82 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Tag: c# | LiuTop开发Blog</title>
+  <title>Unity3D学习笔记(1) | LiuTop开发Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="学会→会学→会用→被用">
-<meta property="og:type" content="website">
-<meta property="og:title" content="LiuTop开发Blog">
-<meta property="og:url" content="http://higoogle.github.io/tags/c/index.html">
+  <meta name="description" content="Unity3D Lifecycle
+Update vs  FixedUpdate
+
+
+
+
+Update
+FixedUpdate
+
+
+
+
+每一帧调用一次
+每隔固定的时间调用一次
+
+
+一般用户非物理运动
+一般用户物理运动
+
+
+
+FixedUpdate时间可是通过Project Settings来设置，它是方便物理引擎来计算的一个方法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Unity3D学习笔记(1)">
+<meta property="og:url" content="http://higoogle.github.io/20150827/Unity3D学习笔记-1/index.html">
 <meta property="og:site_name" content="LiuTop开发Blog">
-<meta property="og:description" content="学会→会学→会用→被用">
+<meta property="og:description" content="Unity3D Lifecycle
+Update vs  FixedUpdate
+
+
+
+
+Update
+FixedUpdate
+
+
+
+
+每一帧调用一次
+每隔固定的时间调用一次
+
+
+一般用户非物理运动
+一般用户物理运动
+
+
+
+FixedUpdate时间可是通过Project Settings来设置，它是方便物理引擎来计算的一个方法">
+<meta property="og:image" content="http://7xl7u4.com1.z0.glb.clouddn.com/imageunity-lifetime.png">
+<meta property="og:updated_time" content="2015-08-27T07:46:46.634Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="LiuTop开发Blog">
-<meta name="twitter:description" content="学会→会学→会用→被用">
+<meta name="twitter:title" content="Unity3D学习笔记(1)">
+<meta name="twitter:description" content="Unity3D Lifecycle
+Update vs  FixedUpdate
+
+
+
+
+Update
+FixedUpdate
+
+
+
+
+每一帧调用一次
+每隔固定的时间调用一次
+
+
+一般用户非物理运动
+一般用户物理运动
+
+
+
+FixedUpdate时间可是通过Project Settings来设置，它是方便物理引擎来计算的一个方法">
   
   
     <link rel="icon" href="/favicon.png">
@@ -178,181 +243,126 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-Unity3D学习笔记-1" class="article article-type-post" itemscope itemprop="blogPost">
   
+    <div class="article-meta">
+      <a href="/20150827/Unity3D学习笔记-1/" class="article-date">
+  	<time datetime="2015-08-27T07:23:53.000Z" itemprop="datePublished">2015-08-27</time>
+</a>
+    </div>
   
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
     
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Unity3D学习笔记(1)
+    </h1>
+  
+
+      </header>
       
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Unity3D/">Unity3D</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2015" class="archive-year">2015</a>
-        </div>
-        <div class="archives">
     
-    <article class="archive-article archive-type-psot">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/20150825/C-学习笔记-Attributes-8/" class="archive-article-date">
-  	<time datetime="2015-08-25T02:14:29.000Z" itemprop="datePublished">8月 25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/20150825/C-学习笔记-Attributes-8/">C#学习笔记-Attributes(8)</a>
-    </h1>
-  
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Unity3D_Lifecycle">Unity3D Lifecycle</h2><blockquote>
+<p><code>Update</code> vs  <code>FixedUpdate</code></p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Update</th>
+<th style="text-align:left">FixedUpdate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">每一帧调用一次</td>
+<td style="text-align:left">每隔固定的时间调用一次</td>
+</tr>
+<tr>
+<td style="text-align:left">一般用户非物理运动</td>
+<td style="text-align:left">一般用户物理运动</td>
+</tr>
+</tbody>
+</table>
+<p>FixedUpdate时间可是通过Project Settings来设置，它是方便物理引擎来计算的一个方法</p>
+<hr>
+<p><img src="http://7xl7u4.com1.z0.glb.clouddn.com/imageunity-lifetime.png" alt="http://7xl7u4.com1.z0.glb.clouddn.com/imageunity-lifetime.png"></p>
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/">c#</a></li></ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    
   </div>
-</article>
   
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/20150825/C-学习笔记-索引器-7/" class="archive-article-date">
-  	<time datetime="2015-08-25T01:15:51.000Z" itemprop="datePublished">8月 25</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/20150825/C-学习笔记-索引器-7/">C#学习笔记-索引器(7)</a>
-    </h1>
   
+    <a href="/20150827/C-学习笔记-Reflection-10/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">C#学习笔记-Reflection(10)</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/">c#</a></li></ul>
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
 	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
 
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/20150821/C-学习笔记-5/" class="archive-article-date">
-  	<time datetime="2015-08-21T12:50:18.000Z" itemprop="datePublished">8月 21</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/20150821/C-学习笔记-5/">C#学习笔记(5)</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/">c#</a></li></ul>
-	</div>
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="Unity3D学习笔记-1" data-title="Unity3D学习笔记(1)" data-url="http://higoogle.github.io/20150827/Unity3D学习笔记-1/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
 
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/20150821/C-学习笔记-4/" class="archive-article-date">
-  	<time datetime="2015-08-21T03:02:29.000Z" itemprop="datePublished">8月 21</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/20150821/C-学习笔记-4/">C#学习笔记(4)</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/">c#</a></li></ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/20150821/C-学习笔记-3/" class="archive-article-date">
-  	<time datetime="2015-08-21T01:56:15.000Z" itemprop="datePublished">8月 21</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/20150821/C-学习笔记-3/">C#学习笔记(3)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/">c#</a></li></ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/tags/c/page/2/">2</a><a class="extend next" rel="next" href="/tags/c/page/2/">Next &raquo;</a>
-    </nav>
-  
 
 </div>
       <footer id="footer">
@@ -378,9 +388,9 @@
 		mathjax: true,
 		animate: undefined,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: undefined
 	}

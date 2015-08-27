@@ -110,7 +110,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/c/" style="font-size: 20px;">c#</a> <a href="/tags/c-多态/" style="font-size: 10px;">c# 多态</a> <a href="/tags/iOS-bug/" style="font-size: 10px;">iOS bug</a> <a href="/tags/英语-English/" style="font-size: 10px;">英语 English</a>
+						<a href="/tags/Unity3D/" style="font-size: 10px;">Unity3D</a> <a href="/tags/c/" style="font-size: 20px;">c#</a> <a href="/tags/c-多态/" style="font-size: 10px;">c# 多态</a> <a href="/tags/iOS-bug/" style="font-size: 10px;">iOS bug</a> <a href="/tags/英语-English/" style="font-size: 10px;">英语 English</a>
 					</div>
 				</section>
 				
@@ -179,6 +179,224 @@
 	</div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-C-学习笔记-2" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/20150820/C-学习笔记-2/" class="article-date">
+  	<time datetime="2015-08-20T02:57:22.000Z" itemprop="datePublished">2015-08-20</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/20150820/C-学习笔记-2/">C#学习笔记(2)</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>###1. 实例化，默认构造函数<br><figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">class <span class="keyword">Person</span></span><br><span class="line">&#123;</span><br><span class="line">  int age;</span><br><span class="line">  int GetAge()</span><br><span class="line">  &#123;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var p = new <span class="keyword">Person</span>();</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>为什么能够执行，因为Person中有个默认的无参构造函数，其实情况如下：<br><figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">class <span class="keyword">Person</span></span><br><span class="line">&#123;</span><br><span class="line">  int age;</span><br><span class="line">  </span><br><span class="line">  public <span class="keyword">Person</span>()&#123;&#125;</span><br><span class="line">  </span><br><span class="line">  int GetAge()</span><br><span class="line">  &#123;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>对于方法:GetAge() ,前面可以加上范围修饰，比如<code>public,protected,private</code>等，如果没有，则默认<code>private</code>.</p>
+</blockquote>
+<hr>
+<h2 id="alt_+_-&gt;_快速提示可调用的方法"><strong><code>alt + -&gt;</code> 快速提示可调用的方法</strong></h2><h2 id="2-_static_class_,static_class_methods">2. static class ,static class methods</h2><figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">A<span class="keyword"> static</span> function, unlike a regular<span class="function"> (</span>instance<span class="function">)</span> function, is<span class="instruction"> not </span>associated with an<span class="instruction"> instance </span>of the class.</span><br><span class="line">A<span class="keyword"> static</span> class is a class which can only contain<span class="keyword"> static</span> members,<span class="instruction"> and </span>therefore cannot be instantiated.</span><br></pre></td></tr></table></figure>
+<p>就是说：静态方法不用于一般的实例方法，它和实例本身是不相关的，它仅仅是挂在class类的本身。静态类是只能够存在静态成员，并且是不可以实例化的。比如:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> SomeClass &#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">InstanceMethod</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> <span class="number">1</span>; &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">StaticMethod</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> <span class="number">42</span>; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>执行：<br><figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">SomeClass<span class="instruction"> instance </span>=<span class="instruction"> new </span>SomeClass(<span class="function">)</span>;</span><br><span class="line">instance.InstanceMethod(<span class="function">)</span>;   //可以</span><br><span class="line">instance.StaticMethod(<span class="function">)</span>;     //不可以</span><br><span class="line"></span><br><span class="line">SomeClass.InstanceMethod(<span class="function">)</span>;  //不可以</span><br><span class="line">SomeClass.StaticMethod(<span class="function">)</span>;    //可以</span><br></pre></td></tr></table></figure></p>
+<p>静态类：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">class</span> Tools</span><br><span class="line">&#123;</span><br><span class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">GetOne</span><span class="params">()</span></span>&#123;<span class="keyword">return</span> <span class="number">1</span>;&#125;  </span><br><span class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">GetTwo</span><span class="params">()</span></span>&#123;<span class="keyword">return</span> <span class="number">2</span>;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>编译将报错，提示不能在静态类中添加实例方法</p>
+<hr>
+<p>##3. 属性和成员变量<br>Google搜索<a href="http://stackoverflow.com/questions/811354/what-is-the-difference-between-a-property-and-an-instance-variable" target="_blank" rel="external">查看</a><br><figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">in</span> C# a <span class="keyword">property</span> <span class="keyword">is</span> actually a <span class="keyword">function</span> that returns an object, <span class="keyword">while</span> an instance <span class="keyword">variable</span> <span class="keyword">is</span> a non-static member <span class="keyword">variable</span> <span class="keyword">of</span> a class.</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>C#中，property实际上是一个带有返回值的方法，然而 instance vairable 则是一个类的非静态的成员变量<br>property:方法<br>instance varable: member variable</p>
+</blockquote>
+<p>延伸理解，谢谢此博主<a href="http://blog.csdn.net/FS1360472174/article/details/40712663" target="_blank" rel="external">打开</a><br>好东西，我就直接摘取了</p>
+<blockquote>
+<p>1.字段(field):是C#类级别定义的，和方法同一级别。<br>一般用来类内部进行访问，充当一种类中的”全局变量”角色；或者配合属性来使用<br>2.属性：同样是C#类级别定义的，一般是供外部类访问的。<br>3.成员变量：”全局变量”，在类中定义的变量，区别于在方法中定义的局部变量。它与字段属性不是同一级别概念，字段，属性都可以叫做成员变量。</p>
+</blockquote>
+<p>二.使用<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title">Basic</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">string</span> FieldVar;            <span class="comment">//这是字段，在当前类中调用</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">string</span> fieldVarForProperty; <span class="comment">//这是字段，配合属性用</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">string</span>  FieldVarForProperty <span class="comment">//这是属性</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">get</span>&#123;<span class="keyword">return</span> fieldVarForProperty;&#125;   <span class="comment">//属性中使用了字段</span></span><br><span class="line"><span class="keyword">set</span>&#123; fieldVarForProperty=<span class="keyword">value</span>;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><code>注意大小写</code></p>
+<p>这里可以看出：字段就是变量，而属性则类似于方法。属性能够使得外部类访问当前类的字段。这里存在一些问题：<br>1.有人说，那我们可以将字段定义为public，那外部不就可以访问了。<br><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">确实可以访问，但是违背了类的设计原则。面向对象要求对数据进行封装。如果这里我们将字段定义为<span class="keyword">public</span>，来使外部访问，那么外部就会随意的破坏我们的字段。所以不这么做</span><br></pre></td></tr></table></figure></p>
+<p>2.有人说，属性为什么要配合字段使用呢 ，直接定义成下面这样不就可以了</p>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span>  <span class="keyword">string</span> FieldProperty</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">get</span> &#123;<span class="keyword">return</span> FieldProperty;&#125;</span><br><span class="line"><span class="keyword">set</span>&#123;FieldProperty=<span class="keyword">value</span>;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>编译确实没有问题，能够通过。但是思考一下，当我们调用get/set方法时，在方法体内又使用了FieldProperty属性，是个死循环，程序会down掉的</p>
+<p>注：C#是有自动实现的属性的，就是说<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">string</span> FieldProperty</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">get</span>;<span class="keyword">set</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>C#会自动为你声明一个私有字段的</strong></p>
+<p>###三.字段与属性区别</p>
+<blockquote>
+<ol>
+<li>字段总是可读可写(readonly关键字除外)属性可读可写(至少要有一样)</li>
+<li>字段总是立即执行，效率高。属性还需要调用方法，效率低</li>
+<li>字段能作为ref,out参数，属性不可以</li>
+</ol>
+</blockquote>
+<p>所以上文的age的属性写法可以写成：<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">int</span> Age</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">get</span>;</span><br><span class="line">            <span class="keyword">set</span>;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="是不是很方便呢">是不是很方便呢</h2><p>##3. 接口,抽象类</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span>飞机会飞，鸟会飞，他们都继承了同一个接口“飞”；但是F22属于飞机抽象类，鸽子属于鸟抽象类。</span><br><span class="line"><span class="number">2.</span> 就像铁门木门都是门（抽象类），你想要个门我给不了（不能实例化），但我可以给你个具体的铁门或木门（多态）；而且只能是门，你不能说它是窗（单继承）；一个门可以有锁（接口）也可以有门铃（多实现）。 门（抽象类）定义了你是什么，接口（锁）规定了你能做什么（一个接口最好只能做一件事，你不能要求锁也能发出声音吧（接口污染）。</span><br></pre></td></tr></table></figure>
+<p>一、抽象类</p>
+<pre><code>(<span class="number">1</span>) 抽象方法只作声明，而不包含实现，可以看成是没有实现体的虚方法
+(<span class="number">2</span>) 抽象类不能被实例化
+(<span class="number">3</span>) 抽象类可以但不是必须有抽象属性和抽象方法，但是一旦有了抽象方法，就一定要把这个类声明为抽象类
+(<span class="number">4</span>) 具体派生类必须覆盖基类的抽象方法
+(<span class="number">5</span>) 抽象派生类可以覆盖基类的抽象方法，也可以不覆盖。如果不覆盖，则其具体派生类必须覆盖它们。如：
+</code></pre><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title">A</span> <span class="comment">//抽象类A</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> num=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> Num <span class="comment">//抽象类包含属性</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">get</span>;</span><br><span class="line">        <span class="keyword">set</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">virtual</span> <span class="keyword">int</span> <span class="title">getNum</span>(<span class="params"></span>) <span class="comment">//抽象类包含虚方法</span></span><br><span class="line">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> num;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setNum</span>(<span class="params"><span class="keyword">int</span> n</span>) <span class="comment">// //抽象类包含普通方法</span></span><br><span class="line">    </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.num = n;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">E</span>(<span class="params"></span>)</span>; <span class="comment">//类A中的抽象方法E</span></span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title">B</span> : <span class="title">A</span> <span class="comment">//由于类B继承了类A中的抽象方法E,所以类B也变成了抽象类</span></span><br><span class="line">&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">C</span> : <span class="title">B</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">override</span> <span class="keyword">void</span> <span class="title">E</span>(<span class="params"></span>) <span class="comment">//重写从类A继承的抽象方法。如果类B自己还定义了抽象方法，也必须重写</span></span><br><span class="line">    </span>&#123;</span><br><span class="line">        <span class="comment">//throw new Exception("The method or operation is not implemented.");</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">Test</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"></span>)</span><br><span class="line">    </span>&#123;</span><br><span class="line">        C c = <span class="keyword">new</span> C();</span><br><span class="line">        c.E();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>二、接 口</p>
+<pre><code><span class="comment">(1)</span> 接口不能被实例化
+<span class="comment">(2)</span> 接口只能包含方法声明
+<span class="comment">(3)</span> 接口的成员包括方法、属性、索引器、事件
+<span class="comment">(4)</span> 接口中不能包含常量、字段<span class="comment">(域)</span>、构造函数、析构函数、静态成员。如：
+</code></pre><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">delegate</span> <span class="keyword">void</span> <span class="title">EventHandler</span>(<span class="params"><span class="keyword">object</span> sender, Event e</span>)</span>;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title">ITest</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">//int x = 0;</span></span><br><span class="line">    <span class="keyword">int</span> A</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">get</span>;</span><br><span class="line">        <span class="keyword">set</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Test</span>(<span class="params"></span>)</span>;</span><br><span class="line">    <span class="keyword">event</span> EventHandler Event;</span><br><span class="line">    <span class="keyword">int</span> <span class="keyword">this</span>[<span class="keyword">int</span> index]</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">get</span>;</span><br><span class="line">        <span class="keyword">set</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code>(<span class="number">5</span>) 接口中的所有成员默认为<span class="keyword">public</span>，因此接口中不能有<span class="keyword">private</span>修饰符
+(<span class="number">6</span>) 派生类必须实现接口的所有成员
+(<span class="number">7</span>) 一个类可以直接实现多个接口，接口之间用逗号隔开
+(<span class="number">8</span>) 一个接口可以有多个父接口，实现该接口的类必须实现所有父接口中的所有成员
+</code></pre><p>三、抽象类和接口<br>    相同点：<br>    (1) 都可以被继承<br>    (2) 都不能被实例化<br>    (3) 都可以包含方法声明<br>    (4) 派生类必须实现未实现的方法</p>
+<pre><code>区 别：
+(<span class="number">1</span>) 抽象基类可以定义字段、属性、方法实现。接口只能定义属性、索引器、事件、和方法声明，不能包含字段。
+(<span class="number">2</span>) 抽象类是一个不完整的类，需要进一步细化，而接口是一个行为规范。微软的自定义接口总是后带able字段，证明其是表述一类“我能做。。。”
+(<span class="number">3</span>) 接口可以被多重实现，抽象类只能被单一继承
+(<span class="number">4</span>) 抽象类更多的是定义在一系列紧密相关的类间，而接口大多数是关系疏松但都实现某一功能的类中
+(<span class="number">5</span>) 抽象类是从一系列相关对象中抽象出来的概念， 因此反映的是事物的内部共性；接口是为了满足外部调用而定义的一个功能约定， 因此反映的是事物的外部特性
+(<span class="number">6</span>) 接口基本上不具备继承的任何具体特点,它仅仅承诺了能够调用的方法    
+(<span class="number">7</span>) 接口可以用于支持回调,而继承并不具备这个特点
+(<span class="number">8</span>) 抽象类实现的具体方法默认为虚的，但实现接口的类中的接口方法却默认为非虚的，当然您也可以声明为虚的 
+(<span class="number">9</span>) 如果抽象类实现接口，则可以把接口中方法映射到抽象类中作为抽象方法而不必实现，而在抽象类的子类中实现接口中方法
+
+使用规则：
+<span class="number">1</span>、抽象类主要用于关系密切的对象，而接口最适合为不相关的类提供通用功能 
+<span class="number">2</span>、如果要设计大的功能单元，则使用抽象类；如果要设计小而简练的功能块，则使用接口。
+<span class="number">3</span>、如果预计要创建组件的多个版本，则创建抽象类。接口一旦创建就不能更改。如果需要接口的新版本，必须创建一个全新的接口。
+<span class="number">4</span>、如果创建的功能将在大范围的全异对象间使用，则使用接口；如果要在组件的所有实现间提供通用的已实现功能，则使用抽象类。   
+<span class="number">5</span>、分析对象，提炼内部共性形成抽象类，用以表示对象本质，即“是什么”。为外部提供调用或功能需要扩充时优先使用接口
+<span class="number">6</span>、好的接口定义应该是具有专一功能性的，而不是多功能的，否则造成接口污染。如果一个类只是实现了这个接口的中一个功能，而不得不去实现接口中的其他方法，就叫接口污染
+<span class="number">7</span>、尽量避免使用继承来实现组建功能，而是使用黑箱复用，即对象组合。因为继承的层次增多，造成最直接的后果就是当你调用这个类群中某一类，就必须把他们全部加载到栈中！后果可想而知。(结合堆栈原理理解)。同时，有心的朋友可以留意到微软在构建一个类时，很多时候用到了对象组合的方法。比如 asp.net中，Page类，有Server Request等属性，但其实他们都是某个类的对象。使用Page类的这个对象来调用另外的类的方法和属性，这个是非常基本的一个设计原则
+</code></pre><blockquote>
+<p>参考</p>
+<ol>
+<li><a href="http://kb.cnblogs.com/page/41836/" target="_blank" rel="external">http://kb.cnblogs.com/page/41836/</a> </li>
+<li><a href="http://blog.csdn.net/FS1360472174/article/details/40712663" target="_blank" rel="external">http://blog.csdn.net/FS1360472174/article/details/40712663</a></li>
+<li><a href="http://stackoverflow.com/questions/811354/what-is-the-difference-between-a-property-and-an-instance-variable" target="_blank" rel="external">http://stackoverflow.com/questions/811354/what-is-the-difference-between-a-property-and-an-instance-variable</a></li>
+<li><a href="http://www.caogenit.com/caogenxueyuan/bianchengyuyan/Csharp/2152.html" target="_blank" rel="external">http://www.caogenit.com/caogenxueyuan/bianchengyuyan/Csharp/2152.html</a></li>
+</ol>
+</blockquote>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/">c#</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-C-学习笔记-1" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/20150820/C-学习笔记-1/" class="article-date">
+  	<time datetime="2015-08-20T01:53:01.000Z" itemprop="datePublished">2015-08-20</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/20150820/C-学习笔记-1/">C#学习笔记(1)</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li>C#中所有的值类型都继承于<code>System.ValueType</code>,然而<code>System.ValueType</code>又继承于<code>System.Object</code>.</li>
+<li><code>System.Object</code>是所有的类的基类</li>
+<li>int = Int32</li>
+<li>bool = Sytem.Bool 以此类推。。。</li>
+<li>变量首字母小写，方法首字母大写</li>
+<li><code>int x = 0;</code> 等价于 <code>int x = new int();</code>  //不同于Java</li>
+<li><code>F12</code>查看类的定义</li>
+<li>就拿<code>int</code>类型说明，<code>int</code>是struct类型，它本身有些方法，可以通过<code>.</code>来调用</li>
+<li>枚举: <code>enum Week{Mon,Thu,Wen,Tus,Fri,Sat,Sun};</code> 打印的结果是Mon,而非类是OC,Java的0，1，2等,不过可以强制转化为int类型，这个机制是通用的。</li>
+<li>CSharp 3 推出<code>var</code>.任何类型都可以使用<code>var</code>来申明，比如:<code>var z = 100;</code></li>
+</ol>
+<hr>
+<ol>
+<li>CSharp3中内置类类型：<code>Object,String,Dynamic</code>.</li>
+<li>关于类型大小的写：<code>string username = &quot;zhanshan&quot;;</code> == <code>Stirng username = &quot;zhanshan&quot;</code> ==<code>System.String username = &quot;zhanshan&quot;;同样的</code>Object = object = System.Object`</li>
+<li><code>Object</code>常用方法: <code>GetType()</code>,<code>ToString()</code></li>
+<li>string可以使用 <code>+=</code> 来处理。 <code>string a = &quot;aa&quot;; a+= &quot;bb&quot;</code>; </li>
+<li><code>string a = &quot;abcd&quot;; a[0] ===&gt; &#39;a&#39;</code></li>
+<li><code>string a =&quot;E:\\DEV&quot;</code> == <code>string a = @&quot;E:\DEV&quot;</code></li>
+<li>如果需要频繁的操作字符串，不推荐使用<code>string</code>,而要使用<code>StringBuilder</code></li>
+<li>因为频繁操作字符串，每次操作都会分配一次内存空间，而使用<code>StringBuilder</code>仅为一次</li>
+</ol>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c/">c#</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
   
     <article id="post-Windows上搭建Hexo" class="article article-type-post" itemscope itemprop="blogPost">
   
